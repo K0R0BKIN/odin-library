@@ -1,9 +1,21 @@
 function Library(books = []) {
-    this.books = books;
+    this.books = [];
+    this.container = this.render();
+
+    books.forEach(book => book.addToLibrary(this));
+}
+
+Library.prototype.render = function() {
+    const libraryContainer = document.createElement("div");
+    libraryContainer.id = "library";
+    document.body.appendChild(libraryContainer);
+
+    return libraryContainer;
 }
 
 Library.prototype.addBook = function(book) {
     this.books.push(book);
+    book.container = book.render();
 };
 
 function Book(title, author, pages, read = false) {
@@ -14,8 +26,23 @@ function Book(title, author, pages, read = false) {
     this.id = crypto.randomUUID();
 }
 
-Book.prototype.addToLibrary = function(library) {
-    library.addBook(this);
+Book.prototype.render = function() {
+    const bookCard = document.createElement("div");
+    bookCard.className = "book-card";
+    bookCard.innerHTML = `
+        <h3>${this.title}</h3>
+        <p>Author: ${this.author}</p>
+        <p>Pages: ${this.pages}</p>
+        <p>Read: ${this.read ? "Yes" : "No"}</p>
+    `;
+    this.library.container.appendChild(bookCard);
+
+    return bookCard;
+};
+
+Book.prototype.addToLibrary = function(library = library) {
+    this.library = library;
+    this.library.addBook(this);
 };
 
 const exampleBooks = [
