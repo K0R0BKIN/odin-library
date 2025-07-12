@@ -5,11 +5,17 @@ function Library(books = []) {
   books.forEach((book) => this.addBook(book));
 
   this.node.addEventListener("click", (event) => {
-    if (event.target.classList.contains("remove-book-btn")) {
-      const bookCard = event.target.closest(".book-card");
-      const bookId = bookCard.dataset.id;
-      const book = this.books[bookId];
-      this.removeBook(book);
+    const bookCard = event.target.closest(".book-card");
+    const bookId = bookCard.dataset.id;
+    const book = this.books[bookId];
+
+    switch (event.target.className) {
+      case "remove-book-btn":
+        this.removeBook(book);
+        break;
+      case "book-read":
+        book.toggleRead();
+        break;
     }
   });
 }
@@ -35,15 +41,20 @@ function Book(title, author, pages, read = false) {
   this.node.className = "book-card";
   this.node.dataset.id = this.id;
   this.node.innerHTML = `
-        <h3>${this.title}</h3>
-        <p>Author: ${this.author}</p>
-        <p>Pages: ${this.pages}</p>
+        <h3 class="book-title">${this.title}</h3>
+        <p class="book-author">Author: ${this.author}</p>
+        <p class="book-pages">Pages: ${this.pages}</p>
         <label>
-            Read: <span>${this.read ? "☑" : "☐"}</span>
+          <input class="book-read" type="checkbox" ${this.read ? "checked" : ""} />
+          Read
         </label>
         <button class="remove-book-btn">Remove</button>
     `;
 }
+
+Book.prototype.toggleRead = function () {
+  this.read = !this.read;
+};
 
 const EXAMPLE_BOOKS = [
   new Book("1984", "George Orwell", 328, true),
