@@ -1,0 +1,1 @@
+Practice project for The Odin Project. Read project brief [here](https://www.theodinproject.com/lessons/node-path-javascript-library).
