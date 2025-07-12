@@ -1,13 +1,27 @@
 function Library(books = []) {
   this.node = document.querySelector("#books");
-  this.books = [];
+  this.books = {};
 
   books.forEach((book) => this.addBook(book));
+
+  this.node.addEventListener("click", (event) => {
+    if (event.target.classList.contains("remove-book-btn")) {
+      const bookCard = event.target.closest(".book-card");
+      const bookId = bookCard.dataset.id;
+      const book = this.books[bookId];
+      this.removeBook(book);
+    }
+  });
 }
 
 Library.prototype.addBook = function (book) {
-  this.books.push(book);
+  this.books[book.id] = book;
   this.node.appendChild(book.node);
+};
+
+Library.prototype.removeBook = function (book) {
+  delete this.books[book.id];
+  book.node.remove();
 };
 
 function Book(title, author, pages, read = false) {
@@ -19,6 +33,7 @@ function Book(title, author, pages, read = false) {
 
   this.node = document.createElement("div");
   this.node.className = "book-card";
+  this.node.dataset.id = this.id;
   this.node.innerHTML = `
         <h3>${this.title}</h3>
         <p>Author: ${this.author}</p>
@@ -26,6 +41,7 @@ function Book(title, author, pages, read = false) {
         <label>
             Read: <span>${this.read ? "☑" : "☐"}</span>
         </label>
+        <button class="remove-book-btn">Remove</button>
     `;
 }
 
