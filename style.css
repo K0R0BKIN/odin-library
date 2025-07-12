@@ -1,3 +1,13 @@
 body {
-    min-height: 100vh;
+  min-height: 100vh;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
 }
