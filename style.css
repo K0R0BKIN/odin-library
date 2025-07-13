@@ -41,23 +41,27 @@ h3 {
 }
 
 body {
+  display: grid;
+  grid-template-rows: 64px 1fr;
+  grid-template-areas: "header" "main";
+
   min-height: 100vh;
 
   font-size: 15px;
   color: var(--text-primary);
+
+  background-color: var(--background-secondary);
 }
 
 #page-header {
+  grid-area: header;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  height: 64px;
   padding: 16px;
 
   border-bottom: var(--border-outline);
-
-  background-color: transparent;
 }
 
 #page-title {
@@ -117,14 +121,37 @@ body {
 }
 
 #form-actions .button-accent {
-  background-color: var(--background-accent);
   color: var(--text-invert);
+
+  background-color: var(--background-accent);
 
   border: none;
 }
 
 #form-actions .button-accent:hover {
-  background-color: hsl(0, 0%, 10%);
   color: hsl(0, 0%, 100%);
+
+  background-color: hsl(0, 0%, 10%);
   box-shadow: 0 0 4px hsl(0, 0%, 90%);
+}
+
+#page-main {
+  grid-area: main;
+
+  padding: 32px;
+}
+
+#books {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 16px;
+}
+
+.book-card {
+  padding: 16px;
+
+  background-color: var(--background-primary);
+
+  border: var(--border-outline);
+  border-radius: 8px;
 }
