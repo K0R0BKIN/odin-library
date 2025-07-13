@@ -11,40 +11,44 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1 id="page-title">Library</h1>
-    <button id="modal-open-btn">Add book</button>
-    <dialog id="dialog">
-      <form id="form">
-        <label for="title-field"
-          >Title:
-          <input
-            type="text"
-            id="title-field"
-            name="title"
-            value="Song of Ice and Fire"
-          />
-        </label>
-        <label for="author-field"
-          >Author:
-          <input
-            type="text"
-            id="author-field"
-            name="author"
-            value="George R. R. Martin"
-          />
-        </label>
-        <label for="pages-field"
-          >Pages:
-          <input type="number" id="pages-field" name="pages" value="694" />
-        </label>
-        <label for="read-field"
-          >Read: <input type="checkbox" id="read-field" name="read"
-        /></label>
-        <button type="submit" id="submit-btn">Add book</button>
-        <button id="modal-close-btn">Cancel</button>
-      </form>
-    </dialog>
-    <div id="books"></div>
+    <header id="page-header">
+      <h1 id="page-title">Library</h1>
+      <button class="button" id="modal-open-btn">Add book</button>
+      <dialog id="dialog">
+        <form id="form">
+          <label for="title-field"
+            >Title:
+            <input
+              type="text"
+              id="title-field"
+              name="title"
+              value="Song of Ice and Fire"
+            />
+          </label>
+          <label for="author-field"
+            >Author:
+            <input
+              type="text"
+              id="author-field"
+              name="author"
+              value="George R. R. Martin"
+            />
+          </label>
+          <label for="pages-field"
+            >Pages:
+            <input type="number" id="pages-field" name="pages" value="694" />
+          </label>
+          <label for="read-field"
+            >Read: <input type="checkbox" id="read-field" name="read"
+          /></label>
+          <button type="submit" id="submit-btn">Add book</button>
+          <button id="modal-close-btn">Cancel</button>
+        </form>
+      </dialog>
+    </header>
+    <main>
+      <div id="books"></div>
+    </main>
     <script src="script.js"></script>
   </body>
 </html>

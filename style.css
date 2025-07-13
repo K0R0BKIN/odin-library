@@ -1,5 +1,66 @@
+:root {
+  --text-primary: hsl(0, 0%, 10%);
+  --text-secondary: hsl(0, 0%, 30%);
+
+  --background-primary: hsl(0, 0%, 100%);
+  --background-secondary: hsl(0, 0%, 99%);
+  --background-tertiary: hsl(0, 0%, 97%);
+
+  --border-color: hsl(0, 0%, 80%);
+
+  --border-outline: 1px solid var(--border-color);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+.button {
+  height: 32px;
+
+  line-height: 1;
+  font-size: 14px;
+  font-weight: 450;
+  color: var(--text-primary);
+
+  padding: 8px;
+  border: var(--border-outline);
+  border-radius: 6px;
+
+  background-color: var(--background-secondary);
+
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--background-tertiary);
+}
+
 body {
   min-height: 100vh;
+
+  font-size: 15px;
+  color: var(--text-primary);
+}
+
+#page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 64px;
+
+  padding: 16px;
+  border-bottom: var(--border-outline);
+
+  background-color: transparent;
+}
+
+#page-title {
+  font-size: 20px;
+  font-weight: 550;
 }
 
 label {
