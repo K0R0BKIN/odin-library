@@ -40,6 +40,21 @@ h3 {
   background-color: var(--background-tertiary);
 }
 
+.button-accent {
+  color: var(--text-invert);
+
+  background-color: var(--background-accent);
+
+  border: none;
+}
+
+.checkbox {
+  width: 1em;
+  height: 1em;
+
+  accent-color: var(--text-primary);
+}
+
 body {
   display: grid;
   grid-template-rows: 64px 1fr;
@@ -49,8 +64,6 @@ body {
 
   font-size: 15px;
   color: var(--text-primary);
-
-  background-color: var(--background-secondary);
 }
 
 #page-header {
@@ -105,11 +118,7 @@ body {
 }
 
 .form-field.checkbox-field .field-input {
-  height: 1em;
-  width: 1em;
   margin-right: 8px;
-
-  accent-color: var(--text-primary);
 }
 
 #form-actions {
@@ -118,14 +127,6 @@ body {
   gap: 8px;
 
   margin-top: 64px;
-}
-
-#form-actions .button-accent {
-  color: var(--text-invert);
-
-  background-color: var(--background-accent);
-
-  border: none;
 }
 
 #form-actions .button-accent:hover {
@@ -148,10 +149,69 @@ body {
 }
 
 .book-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
   padding: 16px;
 
   background-color: var(--background-primary);
+  box-shadow: inset 0 0 1px hsl(0, 0%, 80%);
 
   border: var(--border-outline);
   border-radius: 8px;
+}
+
+.book-card .book-title,
+.book-data td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+
+.book-card .book-title {
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.book-card .book-data {
+  table-layout: fixed;
+
+  line-height: 1.5;
+}
+
+.book-data th {
+  text-align: left;
+
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.book-data td:has(.checkbox) {
+  display: flex;
+  align-items: center;
+
+  height: 1lh;
+}
+
+.book-card .book-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.book-actions .button {
+  font-weight: 500;
+}
+
+.book-actions .button[data-action="remove"] {
+  color: #d1242f;
+
+  &:hover {
+    color: var(--text-invert);
+
+    background-color: hsl(0, 80%, 50%);
+
+    border-color: transparent;
+  }
 }

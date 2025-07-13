@@ -9,11 +9,11 @@ function Library(books = []) {
     const bookId = bookCard.dataset.id;
     const book = this.books[bookId];
 
-    switch (event.target.className) {
-      case "remove-book-btn":
+    switch (event.target.dataset.action) {
+      case "remove":
         this.removeBook(book);
         break;
-      case "book-read":
+      case "toggle-read":
         book.toggleRead();
         break;
     }
@@ -41,19 +41,48 @@ function Book(title, author, pages, read = false) {
   this.node.className = "book-card";
   this.node.dataset.id = this.id;
   this.node.innerHTML = `
-        <h3 class="book-title">${this.title}</h3>
-        <p class="book-author">Author: ${this.author}</p>
-        <p class="book-pages">Pages: ${this.pages}</p>
-        <label>
-          <input class="book-read" type="checkbox" ${this.read ? "checked" : ""} />
-          Read
-        </label>
-        <button class="remove-book-btn">Remove</button>
-    `;
+    <header class="book-header">
+      <h2 class="book-title">${this.title}</h2>
+    </header>
+    <table class="book-data">
+      <tbody>
+        <colgroup>
+          <col style="width: 8ch" />
+          <col style="width: 1fr" />
+        </colgroup>
+        <tr data-field="author">
+          <th>Author</th>
+          <td>${this.author}</td>
+        </tr>
+        <tr data-field="pages">
+          <th>Pages</th>
+          <td>${this.pages}</td>
+        </tr>
+        <tr data-field="read">
+          <th>Read</th>
+          <td>
+            <input class="checkbox" data-action="toggle-read" type="checkbox" ${this.read ? "checked" : ""} />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <footer class="book-actions">
+      <button class="button" data-action="toggle-read">${
+        this.read ? "Mark unread" : "Mark read"
+      }</button>
+      <button class="button" data-action="remove">Remove</button>
+    </footer>
+  `;
 }
 
 Book.prototype.toggleRead = function () {
   this.read = !this.read;
+
+  const checkbox = this.node.querySelector(".checkbox");
+  checkbox.checked = this.read;
+
+  const button = this.node.querySelector(".button[data-action='toggle-read']");
+  button.textContent = this.read ? "Mark unread" : "Mark read";
 };
 
 const EXAMPLE_BOOKS = [
