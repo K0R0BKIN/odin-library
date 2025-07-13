@@ -1,10 +1,12 @@
 :root {
   --text-primary: hsl(0, 0%, 10%);
   --text-secondary: hsl(0, 0%, 30%);
+  --text-invert: hsl(0, 0%, 97%);
 
   --background-primary: hsl(0, 0%, 100%);
   --background-secondary: hsl(0, 0%, 99%);
   --background-tertiary: hsl(0, 0%, 97%);
+  --background-accent: hsl(0, 0%, 20%);
 
   --border-color: hsl(0, 0%, 80%);
 
@@ -19,13 +21,13 @@ h3 {
 
 .button {
   height: 32px;
+  padding: 8px;
 
   line-height: 1;
   font-size: 14px;
   font-weight: 450;
   color: var(--text-primary);
 
-  padding: 8px;
   border: var(--border-outline);
   border-radius: 6px;
 
@@ -51,8 +53,8 @@ body {
   align-items: center;
 
   height: 64px;
-
   padding: 16px;
+
   border-bottom: var(--border-outline);
 
   background-color: transparent;
@@ -63,12 +65,66 @@ body {
   font-weight: 550;
 }
 
-label {
-  display: block;
-  margin-bottom: 0.5rem;
+#dialog {
+  width: 20rem;
+  padding: 32px;
+
+  border: var(--border-outline);
+  border-radius: 6px;
+
+  background-color: var(--background-primary);
 }
 
-input[type="text"],
-input[type="number"] {
+.form-field {
+  margin-bottom: 16px;
+}
+
+.form-field.form-field.text-field .field-label {
+  display: block;
+
+  margin-bottom: 6px;
+
+  font-weight: 500;
+}
+
+.form-field.text-field .field-input {
   width: 100%;
+  padding: 8px;
+
+  border: var(--border-outline);
+  border-radius: 6px;
+}
+
+.form-field.checkbox-field {
+  display: flex;
+  align-items: center;
+}
+
+.form-field.checkbox-field .field-input {
+  height: 1em;
+  width: 1em;
+  margin-right: 8px;
+
+  accent-color: var(--text-primary);
+}
+
+#form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+
+  margin-top: 64px;
+}
+
+#form-actions .button-accent {
+  background-color: var(--background-accent);
+  color: var(--text-invert);
+
+  border: none;
+}
+
+#form-actions .button-accent:hover {
+  background-color: hsl(0, 0%, 10%);
+  color: hsl(0, 0%, 100%);
+  box-shadow: 0 0 4px hsl(0, 0%, 90%);
 }

@@ -16,33 +16,51 @@
       <button class="button" id="modal-open-btn">Add book</button>
       <dialog id="dialog">
         <form id="form">
-          <label for="title-field"
-            >Title:
+          <div class="form-field text-field" data-field="title">
+            <label class="field-label" for="title-input">Title </label>
             <input
+              class="field-input"
               type="text"
-              id="title-field"
+              id="title-input"
               name="title"
               value="Song of Ice and Fire"
             />
-          </label>
-          <label for="author-field"
-            >Author:
+          </div>
+          <div class="form-field text-field" data-field="author">
+            <label class="field-label" for="author-input">Author </label>
             <input
+              class="field-input"
               type="text"
-              id="author-field"
+              id="author-input"
               name="author"
               value="George R. R. Martin"
             />
-          </label>
-          <label for="pages-field"
-            >Pages:
-            <input type="number" id="pages-field" name="pages" value="694" />
-          </label>
-          <label for="read-field"
-            >Read: <input type="checkbox" id="read-field" name="read"
-          /></label>
-          <button type="submit" id="submit-btn">Add book</button>
-          <button id="modal-close-btn">Cancel</button>
+          </div>
+          <div class="form-field text-field" data-field="pages">
+            <label class="field-label" for="pages-input">Pages </label>
+            <input
+              class="field-input"
+              type="number"
+              id="pages-input"
+              name="pages"
+              value="694"
+            />
+          </div>
+          <div class="form-field checkbox-field" data-field="read">
+            <input
+              class="field-input"
+              type="checkbox"
+              id="read-input"
+              name="read"
+            />
+            <label class="field-label" for="read-input">Read</label>
+          </div>
+          <div id="form-actions">
+            <button class="button button-accent" type="submit" id="submit-btn">
+              Add book
+            </button>
+            <button class="button" id="modal-close-btn">Cancel</button>
+          </div>
         </form>
       </dialog>
     </header>
