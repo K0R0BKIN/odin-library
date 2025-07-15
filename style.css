@@ -166,7 +166,7 @@ body {
 .book-data td {
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; 
+  text-overflow: ellipsis;
 }
 
 .book-card .book-title {
@@ -178,6 +178,10 @@ body {
   table-layout: fixed;
 
   line-height: 1.5;
+}
+
+.book-data {
+  width: 100%;
 }
 
 .book-data th {
