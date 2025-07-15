@@ -197,6 +197,7 @@ body {
 .book-data td:has(.checkbox) {
   display: flex;
   align-items: center;
+  overflow: visible;
 
   height: 1lh;
 }
