@@ -1,4 +1,6 @@
 :root {
+  --font-family: system-ui, Helvetica, Arial, sans-serif;
+
   --text-primary: hsl(0, 0%, 10%);
   --text-secondary: hsl(0, 0%, 30%);
   --text-invert: hsl(0, 0%, 97%);
@@ -62,6 +64,7 @@ body {
 
   min-height: 100vh;
 
+  font-family: var(--font-family);
   font-size: 15px;
   color: var(--text-primary);
 }
